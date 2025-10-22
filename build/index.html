@@ -308,7 +308,7 @@
 
         // երբ transition ավարտվում է
         slideChangeTransitionEnd: function () {
-          const swiperName = document.querySelector('.swiper1');
+          const swiperName = document.querySelector('.swiper2');
           const swiper_wrapper = swiperName.querySelector('.swiper-wrapper');
           const style = window.getComputedStyle(swiper_wrapper);
           const matrix = style.transform || style.webkitTransform;
@@ -320,10 +320,11 @@
       }
     });
 
+    let isTouching = false;
+
     const swiperSliders = [swiper1, swiper2];
 
     swiperSliders.forEach(swiperSlider => {
-      let isTouching = false;
 
       swiperSlider.el.addEventListener('touchstart', () => {
         isTouching = true;
