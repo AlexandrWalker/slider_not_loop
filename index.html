@@ -331,7 +331,7 @@
 
     swiperSliders.forEach(swiperSlider => {
 
-      $(window).on('resize', function () {
+      window.addEventListener('resize', function () {
 
         if (window.innerWidth > 834) {
           swiperSlider.el.addEventListener('touchstart', () => {
