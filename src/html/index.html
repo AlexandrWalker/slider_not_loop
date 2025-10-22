@@ -246,7 +246,7 @@
           const swiper_wrapper = swiperName.querySelector('.swiper-wrapper');
           const style = window.getComputedStyle(swiper_wrapper);
           const matrix = style.transform || style.webkitTransform;
-          const slideWidth = swiper.slides[0] ? swiper.slides[0].offsetWidth : 0;
+          const slideWidth = swiper1.slides[0] ? swiper1.slides[0].offsetWidth : 0;
           // ապահով կետ՝ նշել որ տրանսյուշն ավարտվեց
           isSliding = false;
         }
@@ -312,7 +312,7 @@
           const swiper_wrapper = swiperName.querySelector('.swiper-wrapper');
           const style = window.getComputedStyle(swiper_wrapper);
           const matrix = style.transform || style.webkitTransform;
-          const slideWidth = swiper.slides[0] ? swiper.slides[0].offsetWidth : 0;
+          const slideWidth = swiper2.slides[0] ? swiper2.slides[0].offsetWidth : 0;
 
           // ապահով կետ՝ նշել որ տրանսյուշն ավարտվեց
           isSliding = false;
@@ -320,27 +320,27 @@
       }
     });
 
-    const swipers = [swiper1, swiper2];
+    const swiperSlider = [swiper1, swiper2];
 
-    swipers.forEach(swiper => {
+    swiperSliders.forEach(swiperSlider => {
       let isTouching = false;
 
-      swiper.el.addEventListener('touchstart', () => {
+      swiperSlider.el.addEventListener('touchstart', () => {
         isTouching = true;
-        swiper.params.freeMode.enabled = true;  // ✅ միացնում ենք
+        swiperSlider.params.freeMode.enabled = true;  // ✅ միացնում ենք
       });
 
-      swiper.el.addEventListener('touchend', () => {
+      swiperSlider.el.addEventListener('touchend', () => {
         isTouching = false;
-        swiper.params.freeMode.enabled = false; // 🔇 անջատում ենք
+        swiperSlider.params.freeMode.enabled = false; // 🔇 անջատում ենք
       });
 
-      swiper.el.addEventListener('wheel', (e) => {
+      swiperSlider.el.addEventListener('wheel', (e) => {
         if (e.ctrlKey || Math.abs(e.deltaX) > 0) {
-          swiper.params.freeMode.enabled = true;
-          clearTimeout(swiper._freeModeTimeout);
-          swiper._freeModeTimeout = setTimeout(() => {
-            swiper.params.freeMode.enabled = false;
+          swiperSlider.params.freeMode.enabled = true;
+          clearTimeout(swiperSlider._freeModeTimeout);
+          swiperSlider._freeModeTimeout = setTimeout(() => {
+            swiperSlider.params.freeMode.enabled = false;
           }, 400); // 0.4 վայրկյան հետո անջատում ենք
         }
       });
@@ -357,9 +357,9 @@
         const { dir, speed } = lastNav;
 
         if (dir === 'next') {
-          swiper.slideNext(speed);
+          swiperSlider.slideNext(speed);
         } else {
-          swiper.slidePrev(speed);
+          swiperSlider.slidePrev(speed);
         }
         // հաջորդ քայլը կժամանի slideChangeTransitionEnd ից հետո (թվարկելով processQueue)
       }
@@ -368,8 +368,8 @@
       // որպեսզի գրավենք ցանկացած տեղից կատարված slide-ները
       // (եթե ուզում ես կարող էիր ավելացնել սա վերևի on տիրույթում — առկա է այնտեղ արդեն)
       // ---------------------------
-      swiper.on('slideChangeTransitionStart', () => { isSliding = true; });
-      swiper.on('slideChangeTransitionEnd', () => { isSliding = false; });
+      swiperSlider.on('slideChangeTransitionStart', () => { isSliding = true; });
+      swiperSlider.on('slideChangeTransitionEnd', () => { isSliding = false; });
       // ---------------------------
       // "Темп нажатий" լոգիկան (nav արագ multiple slide քաշքշուկներին)
       // օգտագործում է очередь՝ որպեսզի մեծ քանակի արագ սեղմումները հաջորդվեն հերթով
