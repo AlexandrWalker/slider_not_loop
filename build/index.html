@@ -331,36 +331,29 @@
 
     swiperSliders.forEach(swiperSlider => {
 
-      window.addEventListener('resize', function () {
-
-        if (window.innerWidth > 834) {
-          swiperSlider.el.addEventListener('touchstart', () => {
-            console.log('touchstart');
-            isTouching = true;
-            swiperSlider.params.freeMode.enabled = true;  // ✅ միացնում ենք
-          });
-
-          swiperSlider.el.addEventListener('touchend', () => {
-            console.log('touchend');
-            isTouching = false;
-            swiperSlider.params.freeMode.enabled = false; // 🔇 անջատում ենք
-          });
-
-          swiperSlider.el.addEventListener('wheel', (e) => {
-            if (e.ctrlKey || Math.abs(e.deltaX) > 0) {
-              console.log('wheel');
-              swiperSlider.params.freeMode.enabled = true;
-              clearTimeout(swiperSlider._freeModeTimeout);
-              swiperSlider._freeModeTimeout = setTimeout(() => {
-                swiperSlider.params.freeMode.enabled = false;
-              }, 400); // 0.4 վայրկյան հետո անջատում ենք
-            }
-          });
-        } else {
-          isTouching = true;
-        }
-
+      swiperSlider.el.addEventListener('touchstart', () => {
+        console.log('touchstart');
+        isTouching = true;
+        swiperSlider.params.freeMode.enabled = true;  // ✅ միացնում ենք
       });
+
+      swiperSlider.el.addEventListener('touchend', () => {
+        console.log('touchend');
+        isTouching = false;
+        swiperSlider.params.freeMode.enabled = false; // 🔇 անջատում ենք
+      });
+
+      swiperSlider.el.addEventListener('wheel', (e) => {
+        if (e.ctrlKey || Math.abs(e.deltaX) > 0) {
+          console.log('wheel');
+          swiperSlider.params.freeMode.enabled = true;
+          clearTimeout(swiperSlider._freeModeTimeout);
+          swiperSlider._freeModeTimeout = setTimeout(() => {
+            swiperSlider.params.freeMode.enabled = false;
+          }, 400); // 0.4 վայրկյան հետո անջատում ենք
+        }
+      });
+
       // ---------------------------
       // Process queue — կտարի 1 slide միանգամից
       // ---------------------------
