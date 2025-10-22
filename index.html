@@ -88,9 +88,6 @@
 
 <body>
   <div class="entert__body">
-    <h3>
-      Тут скорость стоит на 500ms
-    </h3>
     <div class="swiper swiper1 entert__body--slider">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -134,58 +131,7 @@
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
-
-    <h3>
-      Тут скорость стоит на 1000ms
-    </h3>
     <div class="swiper swiper2 entert__body--slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="entert__item-img"><img src="./images/entert/entert-1.png" alt=""></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="entert__item-img"><img src="./images/entert/entert-2.png" alt=""></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="entert__item-img"><img src="./images/entert/entert-3.png" alt=""></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="entert__item-img"><img src="./images/entert/entert-4.png" alt=""></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="entert__item-img"><img src="./images/entert/entert-1.png" alt=""></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="entert__item-img"><img src="./images/entert/entert-2.png" alt=""></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="entert__item-img"><img src="./images/entert/entert-3.png" alt=""></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="entert__item-img"><img src="./images/entert/entert-4.png" alt=""></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="entert__item-img"><img src="./images/entert/entert-1.png" alt=""></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="entert__item-img"><img src="./images/entert/entert-2.png" alt=""></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="entert__item-img"><img src="./images/entert/entert-3.png" alt=""></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="entert__item-img"><img src="./images/entert/entert-4.png" alt=""></div>
-        </div>
-      </div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </div>
-
-    <h3>
-      Тут скорость стоит на 2000ms
-    </h3>
-    <div class="swiper swiper3 entert__body--slider">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <div class="entert__item-img"><img src="./images/entert/entert-1.png" alt=""></div>
@@ -242,6 +188,214 @@
     // ---------------------------
     // Swiper init
     // ---------------------------
+    const swiper1 = new Swiper('.swiper1', {
+      slidesPerView: 3,
+      spaceBetween: 15,
+      centeredSlides: false,
+      centeredSlidesBounds: true,
+      centerInsufficientSlides: true,
+      slidesOffsetBefore: 0,
+      slidesOffsetAfter: 0,
+      loop: false,
+      speed: 500,
+      simulateTouch: true,
+      watchOverflow: true,
+
+      freeMode: {
+        enabled: false,
+        momentum: false,
+        momentumBounce: false,
+        sticky: true,
+      },
+
+      mousewheel: {
+        forceToAxis: true,
+        sensitivity: 1,
+        releaseOnEdges: true
+      },
+
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+
+      on: {
+        // երբ transition սկսվում է
+        slideChangeTransitionStart: function () {
+          isSliding = true;
+        },
+        // երբ transition ավարտվում է
+        slideChangeTransitionEnd: function () {
+          const swiperName = document.querySelector('.swiper1');
+          const swiper_wrapper = swiperName.querySelector('.swiper-wrapper');
+          const style = window.getComputedStyle(swiper_wrapper);
+          const matrix = style.transform || style.webkitTransform;
+          const slideWidth = swiper.slides[0] ? swiper.slides[0].offsetWidth : 0;
+          // ապահով կետ՝ նշել որ տրանսյուշն ավարտվեց
+          isSliding = false;
+        }
+      }
+    });
+
+    const swiper2 = new Swiper('.swiper2', {
+      slidesPerView: 3,
+      spaceBetween: 15,
+      centeredSlides: false,
+      centeredSlidesBounds: true,
+      centerInsufficientSlides: true,
+      slidesOffsetBefore: 0,
+      slidesOffsetAfter: 0,
+      loop: false,
+      speed: 500,
+      simulateTouch: true,
+      watchOverflow: true,
+
+      freeMode: {
+        enabled: false,
+        momentum: false,
+        momentumBounce: false,
+        sticky: true,
+      },
+
+      mousewheel: {
+        forceToAxis: true,
+        sensitivity: 1,
+        releaseOnEdges: true
+      },
+
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+
+      on: {
+        // երբ transition սկսվում է
+        slideChangeTransitionStart: function () {
+          isSliding = true;
+        },
+
+        // երբ transition ավարտվում է
+        slideChangeTransitionEnd: function () {
+          const swiperName = document.querySelector('.swiper1');
+          const swiper_wrapper = swiperName.querySelector('.swiper-wrapper');
+          const style = window.getComputedStyle(swiper_wrapper);
+          const matrix = style.transform || style.webkitTransform;
+          const slideWidth = swiper.slides[0] ? swiper.slides[0].offsetWidth : 0;
+
+          // ապահով կետ՝ նշել որ տրանսյուշն ավարտվեց
+          isSliding = false;
+        }
+      }
+    });
+
+    const swipers = [swiper1, swiper2];
+
+    swipers.forEach(swiper => {
+      let isTouching = false;
+
+      swiper.el.addEventListener('touchstart', () => {
+        isTouching = true;
+        swiper.params.freeMode.enabled = true;  // ✅ միացնում ենք
+      });
+
+      swiper.el.addEventListener('touchend', () => {
+        isTouching = false;
+        swiper.params.freeMode.enabled = false; // 🔇 անջատում ենք
+      });
+
+      swiper.el.addEventListener('wheel', (e) => {
+        if (e.ctrlKey || Math.abs(e.deltaX) > 0) {
+          swiper.params.freeMode.enabled = true;
+          clearTimeout(swiper._freeModeTimeout);
+          swiper._freeModeTimeout = setTimeout(() => {
+            swiper.params.freeMode.enabled = false;
+          }, 400); // 0.4 վայրկյան հետո անջատում ենք
+        }
+      });
+      // ---------------------------
+      // Process queue — կտարի 1 slide միանգամից
+      // ---------------------------
+      function processQueue() {
+        if (!lastNav) return;
+        if (slideQueue <= 0) return;
+        if (isSliding) return; // սպասում ենք մինչև ավարտվի ընթացողը
+
+        // վերցնում ենք մեկ քայլ (առաջիկա)
+        slideQueue = Math.max(0, slideQueue - 1);
+        const { dir, speed } = lastNav;
+
+        if (dir === 'next') {
+          swiper.slideNext(speed);
+        } else {
+          swiper.slidePrev(speed);
+        }
+        // հաջորդ քայլը կժամանի slideChangeTransitionEnd ից հետո (թվարկելով processQueue)
+      }
+      // ---------------------------
+      // Ստեղ ամենավերջում միացնել ենք slideChangeTransitionStart/End նորից,
+      // որպեսզի գրավենք ցանկացած տեղից կատարված slide-ները
+      // (եթե ուզում ես կարող էիր ավելացնել սա վերևի on տիրույթում — առկա է այնտեղ արդեն)
+      // ---------------------------
+      swiper.on('slideChangeTransitionStart', () => { isSliding = true; });
+      swiper.on('slideChangeTransitionEnd', () => { isSliding = false; });
+      // ---------------------------
+      // "Темп нажатий" լոգիկան (nav արագ multiple slide քաշքշուկներին)
+      // օգտագործում է очередь՝ որպեսզի մեծ քանակի արագ սեղմումները հաջորդվեն հերթով
+      // ---------------------------
+      (function tempoNav() {
+        const nextBtn = document.querySelector('.swiper-button-next');
+        const prevBtn = document.querySelector('.swiper-button-prev');
+        let clickTimes = [];
+        const WINDOW_MS = 800;
+
+        function recordAndDecide() {
+          const now = Date.now();
+          clickTimes = clickTimes.filter(t => now - t < WINDOW_MS);
+          clickTimes.push(now);
+          const clicks = clickTimes.length;
+          if (clicks >= 5) return { slides: Math.min(4, clicks - 1), speed: 180 };
+          if (clicks >= 3) return { slides: 2, speed: 260 };
+          if (clicks === 2) return { slides: 1, speed: 340 };
+          return { slides: 1, speed: 200 };
+        }
+
+        function navHandler(dir) {
+          const { slides, speed } = recordAndDecide();
+
+          // Եթե հիմա մի transition է ընթացքի մեջ՝ հերթով կուտակենք
+          lastNav = { dir, speed };
+
+          // queue++ համապատասխան slides քանակով
+          slideQueue += slides;
+
+          // անմիջապես փորձենք processQueue անել՝ եթե հնարավոր է
+          processQueue();
+        }
+      })();
+    });
+
+  </script>
+  <!-- <script>
+    // ---------------------------
+    // Global state
+    // ---------------------------
+    let isSliding = false;    // transition ongoing flag
+    let slideQueue = 0;       // queued slide actions count
+    let lastNav = null;       // last navigation params {dir, speed}
+
+    // ---------------------------
+    // Swiper init
+    // ---------------------------
     const swiper = new Swiper('.swiper1', {
       slidesPerView: 1,
       spaceBetween: 10,
@@ -284,36 +438,6 @@
         },
       },
       on: {
-
-        // Когда начинается переход?
-        slideChangeTransitionStart: function () {
-          isSliding = true;
-        },
-
-        // Когда заканчивается переход?
-        slideChangeTransitionEnd: function () {
-          const swiperName = document.querySelector('.swiper1');
-          const swiper_wrapper = swiperName.querySelector('.swiper-wrapper');
-          const style = window.getComputedStyle(swiper_wrapper);
-          const matrix = style.transform || style.webkitTransform;
-          const slideWidth = swiper.slides[0] ? swiper.slides[0].offsetWidth : 0;
-
-          // безопасная точка: указывает, что передача завершена
-          isSliding = false;
-        },
-
-        // ---------------------------
-        // Здесь, в самом конце, мы снова включили slideChangeTransitionStart/End,
-        // чтобы захватывать слайды из любой точки мира
-        // ---------------------------
-        slideChangeTransitionStart: () => {
-          isSliding = true;
-        },
-
-        slideChangeTransitionEnd: () => {
-          isSliding = false;
-        },
-
         touchstart: () => {
           isTouching = true;
           swiper.params.freeMode.enabled = true;  // ✅ мы соединяемся
@@ -333,195 +457,6 @@
             }, 400); // 0.4 Через секунду выключаем.
           }
         }
-
-      }
-    });
-
-    const swiper2 = new Swiper('.swiper2', {
-      slidesPerView: 1,
-      spaceBetween: 10,
-      centeredSlides: false,
-      centeredSlidesBounds: true,
-      slidesOffsetBefore: 0,
-      slidesOffsetAfter: 0,
-      loop: false,
-      centerInsufficientSlides: true,
-      speed: 1000,
-      simulateTouch: true,
-      watchOverflow: true,
-      freeMode: {
-        enabled: false,
-        momentum: false,
-        momentumBounce: false,
-        sticky: true,
-      },
-      mousewheel: {
-        forceToAxis: true,
-        sensitivity: 1,
-        releaseOnEdges: true
-      },
-      navigation: {
-        prevEl: '.swiper-button-prev',
-        nextEl: '.swiper-button-next'
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      },
-      breakpoints: {
-        520: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 20,
-        },
-      },
-      on: {
-        // Когда начинается переход?
-        slideChangeTransitionStart: function () {
-          isSliding = true;
-        },
-
-        // Когда заканчивается переход?
-        slideChangeTransitionEnd: function () {
-          const swiperName = document.querySelector('.swiper1');
-          const swiper_wrapper = swiperName.querySelector('.swiper-wrapper');
-          const style = window.getComputedStyle(swiper_wrapper);
-          const matrix = style.transform || style.webkitTransform;
-          const slideWidth = swiper.slides[0] ? swiper.slides[0].offsetWidth : 0;
-
-          // безопасная точка: указывает, что передача завершена
-          isSliding = false;
-        },
-
-        // ---------------------------
-        // Здесь, в самом конце, мы снова включили slideChangeTransitionStart/End,
-        // чтобы захватывать слайды из любой точки мира
-        // ---------------------------
-        slideChangeTransitionStart: () => {
-          isSliding = true;
-        },
-
-        slideChangeTransitionEnd: () => {
-          isSliding = false;
-        },
-
-        touchstart: () => {
-          isTouching = true;
-          swiper.params.freeMode.enabled = true;  // ✅ мы соединяемся
-        },
-
-        touchend: () => {
-          isTouching = false;
-          swiper.params.freeMode.enabled = false; // 🔇 мы выключаем
-        },
-
-        wheel: (e) => {
-          if (e.ctrlKey || Math.abs(e.deltaX) > 0) {
-            swiper.params.freeMode.enabled = true;
-            clearTimeout(swiper._freeModeTimeout);
-            swiper._freeModeTimeout = setTimeout(() => {
-              swiper.params.freeMode.enabled = false;
-            }, 400); // 0.4 Через секунду выключаем.
-          }
-        }
-
-      }
-    });
-
-    const swiper3 = new Swiper('.swiper3', {
-      slidesPerView: 1,
-      spaceBetween: 10,
-      centeredSlides: false,
-      centeredSlidesBounds: true,
-      slidesOffsetBefore: 0,
-      slidesOffsetAfter: 0,
-      loop: false,
-      centerInsufficientSlides: true,
-      speed: 2000,
-      simulateTouch: true,
-      watchOverflow: true,
-      freeMode: {
-        enabled: false,
-        momentum: false,
-        momentumBounce: false,
-        sticky: true,
-      },
-      mousewheel: {
-        forceToAxis: true,
-        sensitivity: 1,
-        releaseOnEdges: true
-      },
-      navigation: {
-        prevEl: '.swiper-button-prev',
-        nextEl: '.swiper-button-next'
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      },
-      breakpoints: {
-        520: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 20,
-        },
-      },
-      on: {
-        // Когда начинается переход?
-        slideChangeTransitionStart: function () {
-          isSliding = true;
-        },
-
-        // Когда заканчивается переход?
-        slideChangeTransitionEnd: function () {
-          const swiperName = document.querySelector('.swiper1');
-          const swiper_wrapper = swiperName.querySelector('.swiper-wrapper');
-          const style = window.getComputedStyle(swiper_wrapper);
-          const matrix = style.transform || style.webkitTransform;
-          const slideWidth = swiper.slides[0] ? swiper.slides[0].offsetWidth : 0;
-
-          // безопасная точка: указывает, что передача завершена
-          isSliding = false;
-        },
-
-        // ---------------------------
-        // Здесь, в самом конце, мы снова включили slideChangeTransitionStart/End,
-        // чтобы захватывать слайды из любой точки мира
-        // ---------------------------
-        slideChangeTransitionStart: () => {
-          isSliding = true;
-        },
-
-        slideChangeTransitionEnd: () => {
-          isSliding = false;
-        },
-
-        touchstart: () => {
-          isTouching = true;
-          swiper.params.freeMode.enabled = true;  // ✅ мы соединяемся
-        },
-
-        touchend: () => {
-          isTouching = false;
-          swiper.params.freeMode.enabled = false; // 🔇 мы выключаем
-        },
-
-        wheel: (e) => {
-          if (e.ctrlKey || Math.abs(e.deltaX) > 0) {
-            swiper.params.freeMode.enabled = true;
-            clearTimeout(swiper._freeModeTimeout);
-            swiper._freeModeTimeout = setTimeout(() => {
-              swiper.params.freeMode.enabled = false;
-            }, 400); // 0.4 Через секунду выключаем.
-          }
-        }
-
       }
     });
 
@@ -583,7 +518,7 @@
       }
     })();
 
-  </script>
+  </script> -->
 
 </body>
 
